@@ -2,8 +2,8 @@ export default class Calculadora {
     constructor() {
         this.valorActual = "0";
         this.operador = "";
-        this.primerNumero = 0;
-        this.segundoNumero = 0;
+        this.primerNumero = null;
+        this.segundoNumero = null;
         this.resultado = null;
 
     }
@@ -17,16 +17,21 @@ export default class Calculadora {
 
     agregarOperador(operador) {
 
-        if (this.resultado == null) {
-            this.operador = operador;
-            this.primerNumero = Number(this.valorActual);
-            this.limpiar();
-        } else {
-            this.operador = operador;
-            this.primerNumero = this.resultado;
-            this.limpiar();
-        };
+        // si ya hay operación pendiente → calcular primero
+        if (this.operador !== "" && this.valorActual !== "0") {
+            this.calcular();
+        }
+
+        // guardar operador nuevo
+        this.operador = operador;
+
+        // guardar número actual como primer número
+        this.primerNumero = Number(this.valorActual);
+
+        // preparar siguiente entrada
+        this.valorActual = "0";
     }
+
     calcular() {
         this.segundoNumero = Number(this.valorActual);
         switch (this.operador) {
@@ -45,8 +50,11 @@ export default class Calculadora {
             default:
                 console.log("MAL");
         }
-        this.valorActual = "" + this.resultado;
+        this.valorActual = String(this.resultado);
+        this.primerNumero = this.resultado;
+        this.limpiarOperador();
     }
+
     ponerDecimal() {
         if (this.valorActual.includes(".")) {
             console.log("Solo puede haber un punto");
@@ -54,7 +62,7 @@ export default class Calculadora {
             this.valorActual += ".";
         }
     }
-    
+
     cambiarPositivo() {
 
         if (this.valorActual !== "0" && this.valorActual !== "0.") {
@@ -70,11 +78,15 @@ export default class Calculadora {
         this.valorActual = "0";
     }
 
+    limpiarOperador() {
+        this.operador = "";
+    }
+
     reset() {
         this.valorActual = "0";
         this.operador = "";
-        this.primerNumero = 0;
-        this.segundoNumero = 0;
+        this.primerNumero = null;
+        this.segundoNumero = null;
         this.resultado = null;
     }
 
