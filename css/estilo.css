@@ -1,0 +1,81 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+    --color-fondo: #a3f4fa;
+    --color-fondoBorder: #5df1fc;
+    --color-resultado: #fff5c8;
+    --color-resultadoBorder: #ffe190;
+    --color-botonPrimario: #bbffff;
+    --color-botonPrimarioHover: #57b8b8;
+    --color-botonOperacion: #bbffe5;
+    --color-botonOperacionHover: #6ec5a4;
+    --color-texto: #505050;
+}
+
+/* GENERAL */
+#calculadora {
+    display: grid;
+    width: 400px;
+    height: 550px;
+    background-color: var(--color-fondo);
+    border: 2px solid var(--color-fondoBorder);
+    border-radius: 15px;
+    grid-template-areas:
+        "resultado resultado resultado resultado"
+        "borrar ce c dividir"
+        "boton7 boton8 boton9 multiplicar"
+        "boton4 boton5 boton6 restar"
+        "boton1 boton2 boton3 sumar"
+        "masmenos boton0 punto igual";
+    grid-template-rows: 1.5fr repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+    padding: 15px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+/* RESULTADO */
+#resultado {
+    grid-area: resultado;
+    background-color: var(--color-resultado);
+    border: 2px solid var(--color-resultadoBorder);
+    border-radius: 7px;
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--color-texto);
+    text-align: right;
+    padding: 10px;
+}
+
+/* BOTONES Estilo general */
+.boton {
+    display: flex;
+    background-color: var(--color-botonPrimario);
+    border-radius: 7px;
+    border: 2px solid transparent;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--color-texto);
+    cursor: pointer;
+    transition:0.2s;
+    user-select: none;
+}
+
+.boton:hover {
+    border: 2px solid var(--color-botonPrimarioHover);
+}
+
+.botonOperacion {
+    background-color: var(--color-botonOperacion);
+}
+
+.botonOperacion:hover {
+    border: 2px solid var(--color-botonOperacionHover);
+}
