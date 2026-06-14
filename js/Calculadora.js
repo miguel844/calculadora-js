@@ -8,7 +8,11 @@ export default class Calculadora {
 
     }
     agregarNumero(numero) {
-        this.valorActual += numero;
+        if (this.valorActual == "0") {
+            this.valorActual = numero;
+        } else {
+            this.valorActual += numero;
+        }
     }
 
     agregarOperador(operador) {
@@ -41,14 +45,14 @@ export default class Calculadora {
             default:
                 console.log("MAL");
         }
-        this.valorActual = "" +this.resultado;
+        this.valorActual = "" + this.resultado;
     }
 
     limpiar() {
         this.valorActual = "";
     }
 
-    reset(){
+    reset() {
         this.valorActual = "";
         this.operador = "";
         this.primerNumero = 0;
@@ -56,7 +60,12 @@ export default class Calculadora {
         this.resultado = null;
     }
 
-    borrar(){
-        this.valorActual = this.valorActual.slice(0,-1);
+    borrar() {
+        if (this.valorActual.length > 1) {
+            this.valorActual = this.valorActual.slice(0, -1);
+        } else if (this.valorActual == "0") {
+        } else {
+            this.valorActual = "0";
+        }
     }
 }
