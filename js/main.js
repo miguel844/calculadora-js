@@ -14,14 +14,7 @@ botones.forEach(boton => {
             resultado.textContent = calc.valorActual;
 
         } else if (entrada == ".") {
-            if (calc.valorActual == 0 || calc.valorActual == "") {
-                calc.valorActual += "0.";
-            } else if (calc.valorActual.includes(".")) {
-                console.log("Solo puede haber un punto");
-            } else {
-                calc.valorActual += ".";
-            }
-
+            calc.ponerDecimal();
             resultado.textContent = calc.valorActual;
 
         } else if (entrada == "=") {
@@ -30,21 +23,23 @@ botones.forEach(boton => {
 
         } else if (entrada == "C") {
             calc.limpiar();
-            resultado.textContent = 0;
+            resultado.textContent = calc.valorActual;
 
         } else if (entrada == "CE") {
             calc.reset();
-            resultado.textContent = 0;
+            resultado.textContent = calc.valorActual;
 
         } else if (entrada == "←") {
             calc.borrar();
+            resultado.textContent = calc.valorActual;
+        
+        } else if (entrada == "+/-") {
+            calc.cambiarPositivo();
             resultado.textContent = calc.valorActual;
 
         } else {
             calc.agregarOperador(entrada);
         }
-
-        console.log(calc.valorActual);
 
     });
 });
