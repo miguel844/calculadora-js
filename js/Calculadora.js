@@ -41,7 +41,7 @@ export default class Calculadora {
             default:
                 console.log("MAL");
         }
-        this.valorActual = this.resultado;
+        this.valorActual = "" +this.resultado;
     }
 
     limpiar() {
@@ -54,6 +54,9 @@ export default class Calculadora {
         this.primerNumero = 0;
         this.segundoNumero = 0;
         this.resultado = null;
-        
+    }
+
+    borrar(){
+        this.valorActual = this.valorActual.slice(0,-1);
     }
 }

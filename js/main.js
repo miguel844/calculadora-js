@@ -25,6 +25,10 @@ botones.forEach(boton => {
             calc.reset();
             resultado.textContent = 0;
             
+        } else if (entrada == "←") {
+            calc.borrar();
+            resultado.textContent = calc.valorActual;
+
         } else {
             calc.agregarOperador(entrada);
         }
