@@ -12,6 +12,7 @@ export default class Calculadora {
     }
 
     agregarOperador(operador) {
+
         if (this.resultado == null) {
             this.operador = operador;
             this.primerNumero = Number(this.valorActual);
@@ -20,28 +21,39 @@ export default class Calculadora {
             this.operador = operador;
             this.primerNumero = this.resultado;
             this.limpiar();
-        }
+        };
     }
     calcular() {
         this.segundoNumero = Number(this.valorActual);
         switch (this.operador) {
             case "+":
-                return this.resultado = this.primerNumero + this.segundoNumero;
+                this.resultado = this.primerNumero + this.segundoNumero;
                 break;
             case "-":
-                return this.resultado = this.primerNumero - this.segundoNumero;
+                this.resultado = this.primerNumero - this.segundoNumero;
                 break;
             case "x":
-                return this.resultado = this.primerNumero * this.segundoNumero;
+                this.resultado = this.primerNumero * this.segundoNumero;
                 break;
             case "/":
-                return this.resultado = this.primerNumero / this.segundoNumero;
+                this.resultado = this.primerNumero / this.segundoNumero;
                 break;
             default:
                 console.log("MAL");
         }
+        this.valorActual = this.resultado;
     }
+
     limpiar() {
         this.valorActual = "";
+    }
+
+    reset(){
+        this.valorActual = "";
+        this.operador = "";
+        this.primerNumero = 0;
+        this.segundoNumero = 0;
+        this.resultado = null;
+        
     }
 }

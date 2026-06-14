@@ -42,13 +42,7 @@
 /* RESULTADO */
 #resultado {
     grid-area: resultado;
-
     display: grid;
-    grid-template-areas:
-        "operador entradaActual"
-        "total total";
-    grid-template-rows: repeat(2, 1fr);
-    grid-template-columns: 30px 1fr;
     background-color: var(--color-resultado);
     border: 2px solid var(--color-resultadoBorder);
     border-radius: 7px;
@@ -56,23 +50,6 @@
     font-weight: bold;
     color: var(--color-texto);
     padding: 10px;
-}
-#operador{
-    grid-area: operador;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-#total{
-    grid-area: total;
-    overflow: hidden;
-    text-align: right;
-}
-
-#entradaActual{
-    grid-area: entradaActual;
-    overflow: hidden;
     text-align: right;
 }
 
