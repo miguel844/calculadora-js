@@ -2,7 +2,31 @@ import Calculadora from "./Calculadora.js";
 
 const calc = new Calculadora();
 
-calc.agregarNumero("5");
-calc.agregarNumero("2");
+let entradaActual = document.getElementById("entradaActual");
+let operador = document.getElementById("operador");
+let total = document.getElementById("total");
+let botones = document.querySelectorAll("div.boton");
 
-console.log(calc.valorActual);
+botones.forEach(boton => {
+    boton.addEventListener("click", function () {
+        let entrada = boton.textContent;
+        if (/^[0-9]$/.test(entrada)) {
+            calc.agregarNumero(entrada);
+        }else if(entrada == "="){
+           resultado = calc.calcular();
+        } else {
+            calc.agregarOperador(entrada);
+        }
+
+        console.log(calc.valorActual);
+
+    });
+});
+
+
+
+
+
+
+
+

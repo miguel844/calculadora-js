@@ -1,8 +1,47 @@
-export default class Calculadora{
-    constructor(){
+export default class Calculadora {
+    constructor() {
         this.valorActual = "";
+        this.operador = "";
+        this.primerNumero = 0;
+        this.segundoNumero = 0;
+        this.resultado = null;
+
     }
-    agregarNumero(numero){
+    agregarNumero(numero) {
         this.valorActual += numero;
+    }
+
+    agregarOperador(operador) {
+        if (this.resultado == null) {
+            this.operador = operador;
+            this.primerNumero = Number(this.valorActual);
+            this.limpiar();
+        } else {
+            this.operador = operador;
+            this.primerNumero = this.resultado;
+            this.limpiar();
+        }
+    }
+    calcular() {
+        this.segundoNumero = Number(this.valorActual);
+        switch (this.operador) {
+            case "+":
+                return this.resultado = this.primerNumero + this.segundoNumero;
+                break;
+            case "-":
+                return this.resultado = this.primerNumero - this.segundoNumero;
+                break;
+            case "x":
+                return this.resultado = this.primerNumero * this.segundoNumero;
+                break;
+            case "/":
+                return this.resultado = this.primerNumero / this.segundoNumero;
+                break;
+            default:
+                console.log("MAL");
+        }
+    }
+    limpiar() {
+        this.valorActual = "";
     }
 }
