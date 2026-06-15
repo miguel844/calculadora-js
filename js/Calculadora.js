@@ -91,10 +91,11 @@ export default class Calculadora {
     }
 
     borrar() {
-    this.valorActual = this.valorActual.slice(0, -1);
-
-    if (this.valorActual === "0" || this.valorActual === "-") {
-        this.valorActual = "0";
+        
+        if (this.valorActual === "0" || this.valorActual === "-") {
+            this.valorActual = "0";
+        } else {
+            this.valorActual = this.valorActual.slice(0, -1);
+        }
     }
-}
 }
